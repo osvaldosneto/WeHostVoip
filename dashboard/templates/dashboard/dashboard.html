@@ -1,0 +1,403 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <div class="offset-1 col-10 list-div">
+        <div class="container dashboard">
+            <div class="col-4 dashboard-box isup" id="isup">
+                <h4>System Up</h4>
+                <span>{{ obj.isconected }}</span>
+            </div>
+
+            <div class="col-4 dashboard-box upsince" id="upsince">
+                <h4>Up Since</h4>
+                <span>{{ obj.since }}</span>
+            </div>
+
+            <div class="col-4 dashboard-box sessions" id="sessions">
+                <h4>Sessions</h4>
+                <span>{{ obj.sessions }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container graph">
+        <div class="row">
+            <div class="col-6 donut-fs" style="height:250px;">
+                <h4>Stak Size</h4>
+                <div style="margin: auto; width:70%; height:300px;">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+            <div class="col-6 donut-fs" style="height:250px;">
+                <h4>Sessions</h4>
+                <div style="margin: auto; width:70%; height:300px;">
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container dashboard">
+        <div class="row dashboard">
+            <div class="col-4 dashboard-box">
+                <div class="row">
+                    <h3>Gateway {{ gtw1.name }}</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col dashboard-gtw isup">
+                        <h4>System Up</h4>
+                        <h5>{{ gtw1.status }}</h5>
+                    </div>
+                    <div class="col dashboard-gtw upsince">
+                        <h4>Up Since</h4>
+                        <h5>{{ gtw1.since }}</h5>
+                    </div>
+                </div>
+
+                <div class="container graph">
+                    <div class="row">
+                        <div class="col-6 graph01">
+                            <h3>Calls In</h3>
+                            <div style="margin: auto; width:160px; height:200px;">
+                                <canvas id="myChartGtw11" height="300"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-6 graph01">
+                            <h3>Calls Out</h3>
+                            <div style="margin: auto; width:160px; height:200px;">
+                                 <canvas id="myChartGtw12" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 dashboard-box">
+                <div class="row">
+                    <h3>Gateway {{ gtw2.name }}</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col dashboard-gtw isup">
+                        <h4>System Up</h4>
+                        <h5>{{ gtw2.status }}</h5>
+                    </div>
+                    <div class="col dashboard-gtw upsince">
+                        <h4>Up Since</h4>
+                        <h5>{{ gtw2.since }}</h5>
+                    </div>
+                </div>
+
+                <div class="container graph">
+                    <div class="row">
+                        <div class="col-6 graph01">
+                            <h3>Calls In</h3>
+                            <div style="margin: auto; width:160px; height:200px;">
+                                <canvas id="myChartGtw21" height="300"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-6 graph01">
+                            <h3>Calls Out</h3>
+                            <div style="margin: auto; width:160px; height:200px;">
+                                <canvas id="myChartGtw22" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 dashboard-box">
+                <div class="row">
+                    <h3>Gateway {{ gtw3.name }}</h3>
+                </div>
+
+                <div class="row">
+                    <div class="col dashboard-gtw isup">
+                        <h4>System Up</h4>
+                        <h5>{{ gtw3.status }}</h5>
+                    </div>
+                    <div class="col dashboard-gtw upsince">
+                        <h4>Up Since</h4>
+                        <h5>{{ gtw3.since }}</h5>
+                    </div>
+                </div>
+
+
+                <div class="container graph">
+                    <div class="row">
+                        <div class="col-6 graph01">
+                            <h3>Calls In</h3>
+                            <div style="margin: auto; width:160px; height:200px;">
+                                <canvas id="myChartGtw31" height="300"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-6 graph01">
+                            <h3>Calls Out</h3>
+                            <div style="margin: auto; width:160px; height:200px;">
+                                <canvas id="myChartGtw32" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['free', 'busy'],
+                datasets: [{
+                    data: [{{ obj.stack_size }}, {{ obj.stack_min_size }}],
+                    backgroundColor: [
+                        'rgb(0,160,240)',
+                        'rgb(253,0,130)'
+                    ],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    }
+                },
+            }
+        });
+
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['free', 'busy'],
+                datasets: [{
+                    data: [{{ obj.max_sessions }}, {{ obj.sessions }}],
+                    backgroundColor: [
+                        'rgb(0,160,240)',
+                        'rgb(253,0,130)'
+                    ],
+
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        let ctxgtw11 = document.getElementById("myChartGtw11").getContext("2d");
+        let chart11 = new Chart(ctxgtw11, {
+            type: "bar",
+            data: {
+                labels: ['Success', 'Fail'],
+                datasets: [
+                    {
+                        data: [{{ gtw1.callin }}, {{ gtw1.callin_fail }}],
+                        backgroundColor: [
+                            'rgb(0,160,240)',
+                            'rgb(253,0,130)'
+                        ],
+                    }
+                 ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {display: false,},
+                            maxBarThickness: 30 // number (pixels)
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                display: false
+                            },
+                            gridLines: {drawBorder: false,},
+                        }]
+                    },
+                    legend: {display: false,},
+                }
+        });
+
+        let ctxgtw12 = document.getElementById("myChartGtw12").getContext("2d");
+        let chart12 = new Chart(ctxgtw12, {
+            type: "bar",
+            data: {
+                labels: ['Success', 'Fail'],
+                datasets: [
+                    {
+                        data: [{{ gtw1.callout }}, {{ gtw1.callout_fail }}],
+                        backgroundColor: [
+                            'rgb(0,160,240)',
+                            'rgb(253,0,130)'
+                        ],
+                    }
+                 ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {display: false,},
+                            maxBarThickness: 30 // number (pixels)
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                display: false
+                            },
+                            gridLines: {drawBorder: false,},
+                        }]
+                    },
+                    legend: {display: false,},
+                }
+        });
+
+        let ctxgtw21 = document.getElementById('myChartGtw21').getContext('2d');
+        let chart21 = new Chart(ctxgtw21, {
+            type: "bar",
+            data: {
+                labels: ['Success', 'Fail'],
+                datasets: [
+                    {
+                        data: [{{ gtw2.callin }}, {{ gtw2.callin_fail }}],
+                        backgroundColor: [
+                            'rgb(0,160,240)',
+                            'rgb(253,0,130)'
+                        ],
+                    }
+                 ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {display: false,},
+                            maxBarThickness: 30 // number (pixels)
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                display: false
+                            },
+                            gridLines: {drawBorder: false,},
+                        }]
+                    },
+                    legend: {display: false,},
+                }
+        });
+
+        let ctxgtw22 = document.getElementById('myChartGtw22').getContext('2d');
+        let chart22 = new Chart(ctxgtw22, {
+            type: "bar",
+            data: {
+                labels: ['Success', 'Fail'],
+                datasets: [
+                    {
+                        data: [{{ gtw2.callout }}, {{ gtw2.callout_fail }}],
+                        backgroundColor: [
+                            'rgb(0,160,240)',
+                            'rgb(253,0,130)'
+                        ],
+                    }
+                 ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {display: false,},
+                            maxBarThickness: 30 // number (pixels)
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                display: false
+                            },
+                            gridLines: {drawBorder: false,},
+                        }]
+                    },
+                    legend: {display: false,},
+                }
+        });
+
+        let ctxgtw31 = document.getElementById('myChartGtw31').getContext('2d');
+        let chart31 = new Chart(ctxgtw31, {
+            type: "bar",
+            data: {
+                labels: ['Success', 'Fail'],
+                datasets: [
+                    {
+                        data: [{{ gtw3.callin }}, {{ gtw1.callin_fail }}],
+                        backgroundColor: [
+                            'rgb(0,160,240)',
+                            'rgb(253,0,130)'
+                        ],
+                    }
+                 ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {display: false,},
+                            maxBarThickness: 30 // number (pixels)
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                display: false
+                            },
+                            gridLines: {drawBorder: false,},
+                        }]
+                    },
+                    legend: {display: false,},
+                }
+        });
+
+        let ctxgtw32 = document.getElementById('myChartGtw32').getContext('2d');
+        let chart32 = new Chart(ctxgtw32, {
+            type: "bar",
+            data: {
+                labels: ['Success', 'Fail'],
+                datasets: [
+                    {
+                        data: [{{ gtw3.callout }}, {{ gtw3.callout_fail }}],
+                        backgroundColor: [
+                            'rgb(0,160,240)',
+                            'rgb(253,0,130)'
+                        ],
+                    }
+                 ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {display: false,},
+                            maxBarThickness: 30 // number (pixels)
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                display: false
+                            },
+                            gridLines: {drawBorder: false,},
+                        }]
+                    },
+                    legend: {display: false,},
+                }
+        });
+    </script>
+
+{% endblock %}

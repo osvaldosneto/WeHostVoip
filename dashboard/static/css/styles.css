@@ -1,0 +1,164 @@
+.container-fluid{
+    padding: 0;
+}
+
+
+/* Navbar */
+.navbar{
+    border-bottom: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+
+.navbar-nav{
+    margin: auto;
+}
+
+/* dashbard */
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4{
+    font-size: 15px;
+}
+
+.row h3{
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(92, 0, 145);
+}
+
+.dashboard span{
+    font-size: 20px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard h5{
+    font-size: 20px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 80px;
+    width: 32%;
+    text-align: center;
+}
+
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+.dashboard-gtw {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 80px;
+    width: 140px;
+    text-align: center;
+}
+
+.dashboard-gtw:nth-child(2) {
+    margin-left: 5%;
+}
+
+.graph{
+    padding: 0px;
+    width: 100%;
+    display: block;
+    margin-top: 40px;
+}
+
+.donut-fs{
+    margin-top: 20px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #5c0091;
+}
+
+.graph01{
+    margin-top: -20px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #5c0091;
+}
+
+.graph01 h3{
+    font-size: 20px;
+}
+
+.isup{
+    background-color: #00a0f0;
+}
+
+.upsince{
+    background-color: #440091;
+}
+
+.bar-chart-wrapper {
+     height: 510px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#isup {
+    background-color: #00a0f0;
+}
+
+#upsince {
+    background-color: #440091;
+}
+
+#sessions {
+    background-color: #fd0082;
+}
+
+
+
+
+
+
+/* Rodape */
+footer{
+    position: fixed;
+    bottom: 0px;
+    padding-top: 20px;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+footer p {
+    color: #000000;
+    text-align: center;
+    top: 50%;
+    position: relative;
+    font-size: 20px;
+}
