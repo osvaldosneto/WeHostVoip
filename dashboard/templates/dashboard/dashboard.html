@@ -3,146 +3,110 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-    <div class="offset-1 col-10 list-div">
-        <div class="container dashboard">
-            <div class="col-4 dashboard-box isup" id="isup">
-                <h4>System Up</h4>
-                <span>{{ obj.isconected }}</span>
-            </div>
+    <div class="container">
+        <div class="container-dash">
+            <div class="info-main"></div>
+                <div class="info1" id="isup">
+                    <h4>System Up</h4>
+                    <span>{{ obj.isconected }}</span>
+                </div>
+                <div class="info2" id="upsince">
+                    <h4>Up Since</h4>
+                    <span>{{ obj.since }}</span>
+                </div>
+                <div class="info3" id="sessions">
+                    <h4>Sessions</h4>
+                    <span>{{ obj.sessions }}</span>
+                </div>
 
-            <div class="col-4 dashboard-box upsince" id="upsince">
-                <h4>Up Since</h4>
-                <span>{{ obj.since }}</span>
-            </div>
-
-            <div class="col-4 dashboard-box sessions" id="sessions">
-                <h4>Sessions</h4>
-                <span>{{ obj.sessions }}</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="container graph">
-        <div class="row">
-            <div class="col-6 donut-fs" style="height:250px;">
-                <h4>Stak Size</h4>
-                <div style="margin: auto; width:70%; height:300px;">
+            <div class="graph1"></div>
+            <div class="tittle-graph1"><h4>Stak Size</h4></div>
+            <div class="graph-stack">
+                 <div style="margin: auto; width:100%; height:100%;">
                     <canvas id="myChart"></canvas>
                 </div>
             </div>
-            <div class="col-6 donut-fs" style="height:250px;">
-                <h4>Sessions</h4>
-                <div style="margin: auto; width:70%; height:300px;">
+
+            <div class="graph2"></div>
+            <div class="tittle-graph2"><h4>Sessions</h4></div>
+            <div class="graph-sessions">
+                <div style="margin: auto; width:100%; height:100%;">
                     <canvas id="myChart2"></canvas>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <div class="container dashboard">
-        <div class="row dashboard">
-            <div class="col-4 dashboard-box">
-                <div class="row">
-                    <h3>Gateway {{ gtw1.name }}</h3>
+            <div class="graph-sessions"></div>
+            <div class="gtw-1"></div>
+            <div class="gtw-2"></div>
+            <div class="gtw-3"></div>
+
+            <div class="title-gtw1"><h3>Gateway {{ gtw1.name }}</h3></div>
+            <div class="title-gtw2"><h3>Gateway {{ gtw2.name }}</h3></div>
+            <div class="title-gtw3"><h3>Gateway {{ gtw3.name }}</h3></div>
+
+            <div class="infoup-gtw1">
+                <h4>System Up</h4>
+                <span>{{ gtw1.status }}</span>
+            </div>
+
+            <div class="infosince-gtw1">
+                <h4>Up Since</h4>
+                <span>{{ gtw1.since }}</span>
+            </div>
+
+            <div class="callin-gtw1">
+                <h3>Calls In</h3>
+                <div style="width:70%; height:100%;">
+                    <canvas id="myChartGtw11" height="400"></canvas>
                 </div>
-
-                <div class="row">
-                    <div class="col dashboard-gtw isup">
-                        <h4>System Up</h4>
-                        <h5>{{ gtw1.status }}</h5>
-                    </div>
-                    <div class="col dashboard-gtw upsince">
-                        <h4>Up Since</h4>
-                        <h5>{{ gtw1.since }}</h5>
-                    </div>
-                </div>
-
-                <div class="container graph">
-                    <div class="row">
-                        <div class="col-6 graph01">
-                            <h3>Calls In</h3>
-                            <div style="margin: auto; width:160px; height:200px;">
-                                <canvas id="myChartGtw11" height="300"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-6 graph01">
-                            <h3>Calls Out</h3>
-                            <div style="margin: auto; width:160px; height:200px;">
-                                 <canvas id="myChartGtw12" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="callout-gtw1">
+                <h3>Calls Out</h3>
+                <div style="width:70%; height:100%;">
+                    <canvas id="myChartGtw12" height="400"></canvas>
                 </div>
             </div>
 
-            <div class="col-4 dashboard-box">
-                <div class="row">
-                    <h3>Gateway {{ gtw2.name }}</h3>
+            <div class="infoup-gtw2">
+                <h4>System Up</h4>
+                <span>{{ gtw1.status }}</span>
+            </div>
+            <div class="infosince-gtw2">
+                <h4>Up Since</h4>
+                <span>{{ gtw1.since }}</span>
+            </div>
+            <div class="callin-gtw2">
+                <h3>Calls In</h3>
+                <div style="width:70%; height:100%;">
+                    <canvas id="myChartGtw21" height="400"></canvas>
                 </div>
-
-                <div class="row">
-                    <div class="col dashboard-gtw isup">
-                        <h4>System Up</h4>
-                        <h5>{{ gtw2.status }}</h5>
-                    </div>
-                    <div class="col dashboard-gtw upsince">
-                        <h4>Up Since</h4>
-                        <h5>{{ gtw2.since }}</h5>
-                    </div>
-                </div>
-
-                <div class="container graph">
-                    <div class="row">
-                        <div class="col-6 graph01">
-                            <h3>Calls In</h3>
-                            <div style="margin: auto; width:160px; height:200px;">
-                                <canvas id="myChartGtw21" height="300"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-6 graph01">
-                            <h3>Calls Out</h3>
-                            <div style="margin: auto; width:160px; height:200px;">
-                                <canvas id="myChartGtw22" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+            <div class="callout-gtw2">
+                <h3>Calls Out</h3>
+                <div style="width:70%; height:100%;">
+                    <canvas id="myChartGtw22" height="400"></canvas>
                 </div>
             </div>
 
-            <div class="col-4 dashboard-box">
-                <div class="row">
-                    <h3>Gateway {{ gtw3.name }}</h3>
+            <div class="infoup-gtw3">
+                <h4>System Up</h4>
+                <h5>{{ gtw3.status }}</h5>
+            </div>
+            <div class="infosince-gtw3">
+                <h4>Up Since</h4>
+                <h5>{{ gtw3.since }}</h5>
+            </div>
+            <div class="callin-gtw3">
+                <h3>Calls In</h3>
+                <div style="width:70%; height:100%;">
+                    <canvas id="myChartGtw31" height="400"></canvas>
                 </div>
-
-                <div class="row">
-                    <div class="col dashboard-gtw isup">
-                        <h4>System Up</h4>
-                        <h5>{{ gtw3.status }}</h5>
-                    </div>
-                    <div class="col dashboard-gtw upsince">
-                        <h4>Up Since</h4>
-                        <h5>{{ gtw3.since }}</h5>
-                    </div>
+            </div>
+            <div class="callout-gtw3">
+                <h3>Calls Out</h3>
+                <div style="width:70%; height:100%;">
+                    <canvas id="myChartGtw32" height="400"></canvas>
                 </div>
-
-
-                <div class="container graph">
-                    <div class="row">
-                        <div class="col-6 graph01">
-                            <h3>Calls In</h3>
-                            <div style="margin: auto; width:160px; height:200px;">
-                                <canvas id="myChartGtw31" height="300"></canvas>
-                            </div>
-                        </div>
-                        <div class="col-6 graph01">
-                            <h3>Calls Out</h3>
-                            <div style="margin: auto; width:160px; height:200px;">
-                                <canvas id="myChartGtw32" height="300"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
