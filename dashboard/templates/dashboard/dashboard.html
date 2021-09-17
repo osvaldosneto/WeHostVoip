@@ -36,76 +36,100 @@
             </div>
 
             <div class="graph-sessions"></div>
-            <div class="gtw-1"></div>
-            <div class="gtw-2"></div>
-            <div class="gtw-3"></div>
+            <div class="gateway-box">
+                <div class="gtw1"></div>
+                <div class="gtw2"></div>
+                <div class="gtw3"></div>
+                <div class="gtw4"></div>
 
-            <div class="title-gtw1"><h3>Gateway {{ gtw1.name }}</h3></div>
-            <div class="title-gtw2"><h3>Gateway {{ gtw2.name }}</h3></div>
-            <div class="title-gtw3"><h3>Gateway {{ gtw3.name }}</h3></div>
+                <div class="tittle-gtw1"><h3>Gateway {{ gtw1.name }}</h3></div>
+                <div class="tittle-gtw2"><h3>Gateway {{ gtw2.name }}</h3></div>
+                <div class="tittle-gtw3"><h3>Gateway {{ gtw3.name }}</h3></div>
+                <div class="tittle-gtw4"><h3>Gateway {{ gtw4.name }}</h3></div>
 
-            <div class="infoup-gtw1">
-                <h4>System Up</h4>
-                <span>{{ gtw1.status }}</span>
-            </div>
-
-            <div class="infosince-gtw1">
-                <h4>Up Since</h4>
-                <span>{{ gtw1.since }}</span>
-            </div>
-
-            <div class="callin-gtw1">
-                <h3>Calls In</h3>
-                <div style="width:70%; height:100%;">
-                    <canvas id="myChartGtw11" height="400"></canvas>
+                <div class="infoup-gtw1">
+                    <h4>System</h4>
+                    <span>{{ gtw1.status }}</span>
                 </div>
-            </div>
-            <div class="callout-gtw1">
-                <h3>Calls Out</h3>
-                <div style="width:70%; height:100%;">
-                    <canvas id="myChartGtw12" height="400"></canvas>
+                <div class="infosince-gtw1">
+                    <h4>Up Since</h4>
+                    <span>{{ gtw1.since }}</span>
                 </div>
-            </div>
+                <div class="infoup-gtw2">
+                    <h4>System</h4>
+                    <span>{{ gtw2.status }}</span>
+                </div>
+                <div class="infosince-gtw2">
+                    <h4>Up Since</h4>
+                    <span>{{ gtw2.since }}</span>
+                </div>
+                <div class="infoup-gtw3">
+                    <h4>System</h4>
+                    <span>{{ gtw3.status }}</span>
+                </div>
+                <div class="infosince-gtw3">
+                    <h4>Up Since</h4>
+                    <span>{{ gtw3.since }}</span>
+                </div>
+                <div class="infoup-gtw4">
+                    <h4>System</h4>
+                    <span>{{ gtw4.status }}</span>
+                </div>
+                <div class="infosince-gtw4">
+                    <h4>Up Since</h4>
+                    <span>{{ gtw4.since }}</span>
+                </div>
 
-            <div class="infoup-gtw2">
-                <h4>System Up</h4>
-                <span>{{ gtw1.status }}</span>
-            </div>
-            <div class="infosince-gtw2">
-                <h4>Up Since</h4>
-                <span>{{ gtw1.since }}</span>
-            </div>
-            <div class="callin-gtw2">
-                <h3>Calls In</h3>
-                <div style="width:70%; height:100%;">
-                    <canvas id="myChartGtw21" height="400"></canvas>
+                <div class="callin-gtw1">
+                    <h3>Calls In</h3>
+                    <div style="width:70%; height:100%;">
+                        <canvas id="myChartGtw11" height="400"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="callout-gtw2">
-                <h3>Calls Out</h3>
-                <div style="width:70%; height:100%;">
-                    <canvas id="myChartGtw22" height="400"></canvas>
+                <div class="callout-gtw1">
+                    <h3>Calls Out</h3>
+                    <div style="width:70%; height:100%;">
+                        <canvas id="myChartGtw12" height="400"></canvas>
+                    </div>
                 </div>
-            </div>
 
-            <div class="infoup-gtw3">
-                <h4>System Up</h4>
-                <h5>{{ gtw3.status }}</h5>
-            </div>
-            <div class="infosince-gtw3">
-                <h4>Up Since</h4>
-                <h5>{{ gtw3.since }}</h5>
-            </div>
-            <div class="callin-gtw3">
-                <h3>Calls In</h3>
-                <div style="width:70%; height:100%;">
-                    <canvas id="myChartGtw31" height="400"></canvas>
+                <div class="callin-gtw2">
+                    <h3>Calls In</h3>
+                    <div style="width:70%; height:100%;">
+                        <canvas id="myChartGtw21" height="400"></canvas>
+                    </div>
                 </div>
-            </div>
-            <div class="callout-gtw3">
-                <h3>Calls Out</h3>
-                <div style="width:70%; height:100%;">
-                    <canvas id="myChartGtw32" height="400"></canvas>
+                <div class="callout-gtw2">
+                    <h3>Calls Out</h3>
+                    <div style="width:70%; height:100%;">
+                        <canvas id="myChartGtw22" height="400"></canvas>
+                    </div>
+                </div>
+
+                <div class="callin-gtw3">
+                    <h3>Calls In</h3>
+                    <div style="width:70%; height:100%;">
+                        <canvas id="myChartGtw31" height="400"></canvas>
+                    </div>
+                </div>
+                <div class="callout-gtw3">
+                    <h3>Calls Out</h3>
+                    <div style="width:70%; height:100%;">
+                        <canvas id="myChartGtw32" height="400"></canvas>
+                    </div>
+                </div>
+
+                 <div class="callin-gtw4">
+                     <h3>Calls In</h3>
+                     <div style="width:70%; height:100%;">
+                        <canvas id="myChartGtw41" height="400"></canvas>
+                    </div>
+                 </div>
+                <div class="callout-gtw4">
+                    <h3>Calls Out</h3>
+                    <div style="width:70%; height:100%;">
+                        <canvas id="myChartGtw42" height="400"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -114,7 +138,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
-
         var myChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
@@ -302,7 +325,7 @@
                 labels: ['Success', 'Fail'],
                 datasets: [
                     {
-                        data: [{{ gtw3.callin }}, {{ gtw1.callin_fail }}],
+                        data: [{{ gtw3.callin }}, {{ gtw3.callin_fail }}],
                         backgroundColor: [
                             'rgb(0,160,240)',
                             'rgb(253,0,130)'
@@ -337,6 +360,74 @@
                 datasets: [
                     {
                         data: [{{ gtw3.callout }}, {{ gtw3.callout_fail }}],
+                        backgroundColor: [
+                            'rgb(0,160,240)',
+                            'rgb(253,0,130)'
+                        ],
+                    }
+                 ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {display: false,},
+                            maxBarThickness: 30 // number (pixels)
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                display: false
+                            },
+                            gridLines: {drawBorder: false,},
+                        }]
+                    },
+                    legend: {display: false,},
+                }
+        });
+
+        let ctxgtw41 = document.getElementById('myChartGtw41').getContext('2d');
+        let chart41 = new Chart(ctxgtw41, {
+            type: "bar",
+            data: {
+                labels: ['Success', 'Fail'],
+                datasets: [
+                    {
+                        data: [{{ gtw4.callin }}, {{ gtw4.callin_fail }}],
+                        backgroundColor: [
+                            'rgb(0,160,240)',
+                            'rgb(253,0,130)'
+                        ],
+                    }
+                 ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {display: false,},
+                            maxBarThickness: 30 // number (pixels)
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                display: false
+                            },
+                            gridLines: {drawBorder: false,},
+                        }]
+                    },
+                    legend: {display: false,},
+                }
+        });
+
+        let ctxgtw42 = document.getElementById('myChartGtw42').getContext('2d');
+        let chart42 = new Chart(ctxgtw42, {
+            type: "bar",
+            data: {
+                labels: ['Success', 'Fail'],
+                datasets: [
+                    {
+                        data: [{{ gtw4.callout }}, {{ gtw4.callout_fail }}],
                         backgroundColor: [
                             'rgb(0,160,240)',
                             'rgb(253,0,130)'

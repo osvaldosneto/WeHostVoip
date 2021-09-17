@@ -85,27 +85,39 @@
     margin-top: 20px;
 }
 
-.graph-sessions {
-    grid-area: 3 / 4 / 4 / 7;
+.graph-sessions { grid-area: 3 / 4 / 4 / 7; }
+
+.gateway-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.5fr 0.8fr 1.7fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-area: 4 / 1 / 7 / 7;
 }
 
-.gtw-1 {
-    grid-area: 4 / 1 / 7 / 3;
-        justify-self: center;
+.gtw1 {
+    grid-area: 1 / 1 / 4 / 3;
+    justify-self: center;
 }
 
-.gtw-2 {
-    grid-area: 4 / 3 / 7 / 5;
-        justify-self: center;
+.gtw2 {
+    grid-area: 1 / 3 / 4 / 5;
+    justify-self: center;
 }
 
-.gtw-3 {
-    grid-area: 4 / 5 / 7 / 7;
-        justify-self: center;
+.gtw3 {
+    grid-area: 1 / 5 / 4 / 7;
+    justify-self: center;
 }
 
-.title-gtw1 {
-    grid-area: 4 / 1 / 5 / 3;
+.gtw4 {
+    grid-area: 1 / 7 / 4 / 9;
+    justify-self: center;
+}
+
+.tittle-gtw1 {
+    grid-area: 1 / 1 / 2 / 3;
     text-align: center;
     background-color: #dedede;
     align-self: center;
@@ -115,8 +127,8 @@
     width: 90%;
 }
 
-.title-gtw2 {
-    grid-area: 4 / 3 / 5 / 5;
+.tittle-gtw2 {
+    grid-area: 1 / 3 / 2 / 5;
     text-align: center;
     background-color: #dedede;
     align-self: center;
@@ -126,8 +138,19 @@
     width: 90%;
 }
 
-.title-gtw3 {
-    grid-area: 4 / 5 / 5 / 7;
+.tittle-gtw3 {
+    grid-area: 1 / 5 / 2 / 7;
+    text-align: center;
+    background-color: #dedede;
+    align-self: center;
+    height: 100%;
+    margin-top: 70px;
+    vertical-align: middle;
+    width: 90%;
+}
+
+.tittle-gtw4 {
+    grid-area: 1 / 7 / 2 / 9;
     text-align: center;
     background-color: #dedede;
     align-self: center;
@@ -138,128 +161,170 @@
 }
 
 .infoup-gtw1 {
-    grid-area: 5 / 1 / 6 / 2;
+    grid-area: 2 / 1 / 3 / 2;
     font-size: 15px;
     color: #FFF;
     padding: 20px;
     box-sizing: border-box;
-    height: 90%;
-    width: 80%;
+    height: 100%;
+    width: 90%;
     text-align: center;
     background-color: #00a0f0;
-    margin-left: 5%;
-}
-
-
-.callin-gtw1 {
-    grid-area: 6 / 1 / 7 / 2;
-    text-align: center;
-    margin-left: 5%;
+    margin-top: -15%;
 }
 
 .infosince-gtw1 {
-    grid-area: 5 / 2 / 6 / 3;
+    grid-area: 2 / 2 / 3 / 3;
     font-size: 15px;
     color: #FFF;
     padding: 20px;
     box-sizing: border-box;
-    height: 90%;
-    width: 80%;
+    height: 100%;
+    width: 90%;
     text-align: center;
     background-color: #440090;
-    margin-left: -5%;
-}
-
-.callout-gtw1 {
-    grid-area: 6 / 2 / 7 / 3;
-    text-align: center;
-    margin-left: 5%;
+    margin-left: -10%;
+    margin-top: -15%;
 }
 
 .infoup-gtw2 {
-    grid-area: 5 / 3 / 6 / 4;
+    grid-area: 2 / 3 / 3 / 4;
     font-size: 15px;
     color: #FFF;
     padding: 20px;
     box-sizing: border-box;
-    height: 90%;
-    width: 80%;
+    height: 100%;
+    width: 90%;
     text-align: center;
     background-color: #00a0f0;
-    margin-left: 5%;
+    margin-top: -15%;
 }
 
 .infosince-gtw2 {
-    grid-area: 5 / 4 / 6 / 5;
+    grid-area: 2 / 4 / 3 / 5;
     font-size: 15px;
     color: #FFF;
     padding: 20px;
     box-sizing: border-box;
-    height: 90%;
-    width: 80%;
+    height: 100%;
+    width: 90%;
     text-align: center;
     background-color: #440090;
-    margin-left: -5%;
-}
-
-.callin-gtw2 {
-    grid-area: 6 / 3 / 7 / 4;
-    text-align: center;
-    margin-left: 5%;
-}
-
-.callout-gtw2 {
-    grid-area: 6 / 4 / 7 / 5;
-    text-align: center;
-    margin-left: 5%;
+    margin-left: -10%;
+    margin-top: -15%;
 }
 
 .infoup-gtw3 {
-    grid-area: 5 / 5 / 6 / 6;
+    grid-area: 2 / 5 / 3 / 6;
     font-size: 15px;
     color: #FFF;
     padding: 20px;
     box-sizing: border-box;
-    height: 90%;
-    width: 80%;
+    height: 100%;
+    width: 100%;
     text-align: center;
     background-color: #00a0f0;
-    margin-left: 5%;
+    margin-top: -15%;
 }
 
 .infosince-gtw3 {
-    grid-area: 5 / 6 / 6 / 7;
+    grid-area: 2 / 6 / 3 / 7;
     font-size: 15px;
     color: #FFF;
     padding: 20px;
     box-sizing: border-box;
-    height: 90%;
-    width: 80%;
+    height: 100%;
+    width: 90%;
     text-align: center;
     background-color: #440090;
-    margin-left: -5%;
+    margin-left: -10%;
+    margin-top: -15%;
+}
+
+.infoup-gtw4 {
+    grid-area: 2 / 7 / 3 / 8;
+    font-size: 15px;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background-color: #00a0f0;
+    margin-top: -15%;
+}
+
+.infosince-gtw4 {
+    grid-area: 2 / 8 / 3 / 9;
+    font-size: 15px;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 90%;
+    text-align: center;
+    background-color: #440090;
+    margin-left: -10%;
+    margin-top: -15%;
+
+}
+
+.callin-gtw1 {
+    grid-area: 3 / 1 / 4 / 2;
+    text-align: center;
+    margin-left: -15%;
+}
+
+
+.callout-gtw1 {
+    grid-area: 3 / 2 / 4 / 3;
+    text-align: center;
+    margin-left: -15%;
+}
+
+
+.callin-gtw2 {
+    grid-area: 3 / 3 / 4 / 4;
+    text-align: center;
+    margin-left: -15%;
+}
+
+.callout-gtw2 {
+    grid-area: 3 / 4 / 4 / 5;
+    text-align: center;
+    margin-left: -15%;
 }
 
 .callin-gtw3 {
-    grid-area: 6 / 5 / 7 / 6;
+    grid-area: 3 / 5 / 4 / 6;
     text-align: center;
-    margin-left: 5%;
+    margin-left: -10%;
 }
 
 .callout-gtw3 {
-    grid-area: 6 / 6 / 7 / 7;
+    grid-area: 3 / 6 / 4 / 7;
     text-align: center;
-    margin-left: 5%;
+    margin-left: -10%;
+}
+
+.callin-gtw4 {
+    grid-area: 3 / 7 / 4 / 8;
+    text-align: center;
+    margin-left: -10%;
+}
+
+.callout-gtw4 {
+    grid-area: 3 / 8 / 4 / 9;
+    text-align: center;
+    margin-left: -10%;
 }
 
 
 /* Navbar */
-
 .navbar{
     border-bottom: 1px solid #333;
     margin-bottom: 20px;
 }
-
 
 .navbar-nav{
     margin: auto;

@@ -9,12 +9,14 @@ options = {
     'status_gateway_ms1': 'sofia status gateway example.com',
     'status_gateway_ms2': 'sofia status gateway example.com',
     'status_gateway_ms3': 'sofia status gateway example.com',
+    'status_default_GTW': 'sofia status gateway example.com',
 }
 
 obj = {}
 gtw1 = {}
 gtw2 = {}
 gtw3 = {}
+gtw4 = {}
 
 def dashboard(request):
     con = ESL.ESLconnection(options['server'], options['port'], options['auth'])
@@ -28,10 +30,13 @@ def dashboard(request):
         obj['max_sessions'] = '0'
         obj['stack_size'] = '0'
         obj['stack_min_size'] = '0'
-        return
+        gtw1 = setGatewayNull()
+        gtw2 = setGatewayNull()
+        gtw3 = setGatewayNull()
+        gtw4 = setGatewayNull()
+        return render(request, 'dashboard/dashboard.html', {'obj': obj, 'gtw1': gtw1, 'gtw2': gtw2, 'gtw3': gtw3, 'gtw4' : gtw4})
 
     status = con.api(options['status']).getBody()
-
     obj['isconected'] = 'OK'
     obj['since'] = getUpTime(status)
     obj['sessions'] = getSessions(status)
@@ -40,34 +45,54 @@ def dashboard(request):
     obj['stack_min_size'] = getMinStackSize(status)
 
     gtw_status = con.api(options['status_gateway_ms1']).getBody()
-    gtw1['name'] = getName(gtw_status)
-    gtw1['status'] = getGtwStatus(gtw_status)
-    gtw1['since'] = getSinceGtw(gtw_status)
-    gtw1['callin'] = getCallIn(gtw_status)
-    gtw1['callin_fail'] = getCallInFail(gtw_status)
-    gtw1['callout'] = getCallOut(gtw_status)
-    gtw1['callout_fail'] = getCallOutFail(gtw_status)
+    if gtw_status.split(' ')[0] != 'Invalid':
+        gtw1 = setGateway(gtw_status)
+    else:
+        gtw1 = setGatewayNull()
 
     gtw_status = con.api(options['status_gateway_ms2']).getBody()
-    gtw2['name'] = getName(gtw_status)
-    gtw2['status'] = getGtwStatus(gtw_status)
-    gtw2['since'] = getSinceGtw(gtw_status)
-    gtw2['callin'] = getCallIn(gtw_status)
-    gtw2['callin_fail'] = getCallInFail(gtw_status)
-    gtw2['callout'] = getCallOut(gtw_status)
-    gtw2['callout_fail'] = getCallOutFail(gtw_status)
+    if gtw_status.split(' ')[0] != 'Invalid':
+        gtw2 = setGateway(gtw_status)
+    else:
+        gtw2 = setGatewayNull()
 
-    gtw_status = con.api(options['status_gateway_ms2']).getBody()
-    gtw3['name'] = getName(gtw_status)
-    gtw3['status'] = getGtwStatus(gtw_status)
-    gtw3['since'] = getSinceGtw(gtw_status)
-    gtw3['callin'] = getCallIn(gtw_status)
-    gtw3['callin_fail'] = getCallInFail(gtw_status)
-    gtw3['callout'] = getCallOut(gtw_status)
-    gtw3['callout_fail'] = getCallOutFail(gtw_status)
+    gtw_status = con.api(options['status_gateway_ms3']).getBody()
+    if gtw_status.split(' ')[0] != 'Invalid':
+        gtw3 = setGateway(gtw_status)
+    else:
+        gtw3 = setGatewayNull()
 
-    print(gtw3)
-    return render(request, 'dashboard/dashboard.html', {'obj': obj, 'gtw1': gtw1, 'gtw2': gtw2, 'gtw3': gtw3})
+    gtw_status = con.api(options['status_default_GTW']).getBody()
+    if gtw_status.split(' ')[0] != 'Invalid':
+        gtw4 = setGateway(gtw_status)
+    else:
+        gtw4 = setGatewayNull()
+
+    return render(request, 'dashboard/dashboard.html', {'obj': obj, 'gtw1': gtw1, 'gtw2': gtw2, 'gtw3': gtw3, 'gtw4' : gtw4})
+
+
+def setGateway(gtw_status):
+    gtw = {}
+    gtw['name'] = getName(gtw_status)
+    gtw['status'] = getGtwStatus(gtw_status)
+    gtw['since'] = getSinceGtw(gtw_status)
+    gtw['callin'] = getCallIn(gtw_status)
+    gtw['callin_fail'] = getCallInFail(gtw_status)
+    gtw['callout'] = getCallOut(gtw_status)
+    gtw['callout_fail'] = getCallOutFail(gtw_status)
+    return gtw
+
+
+def setGatewayNull():
+    gtw = {}
+    gtw['name'] = "NULL"
+    gtw['status'] = "NULL"
+    gtw['since'] = "NULL"
+    gtw['callin'] = 0
+    gtw['callin_fail'] = 0
+    gtw['callout'] = 0
+    gtw['callout_fail'] = 0
+    return gtw
 
 
 def getUpTime(status):
@@ -131,4 +156,4 @@ def getCallOutFail(gtw_status):
 
 
 def getName(gtw_status):
-    return gtw_status.split('\n')[2].split('\t')[1]
+    return gtw_status.split('\n')[1].split('\t')[1]
