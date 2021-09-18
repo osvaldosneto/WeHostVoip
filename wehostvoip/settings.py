@@ -1,4 +1,5 @@
 from pathlib import Path
+import requests
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +14,8 @@ SECRET_KEY = 'django-insecure-nm4nsufrrx-*r(&vlq6f7w^4(!mo2m#kpmo@!dsy6aktjv#8d6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [ requests.get('https://api.ipify.org').text, '127.0.0.1' ]
 
 
 # Application definition

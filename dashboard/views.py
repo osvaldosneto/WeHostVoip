@@ -6,10 +6,10 @@ options = {
     'server': '127.0.0.1',
     'port': '8021',
     'status': 'status',
-    'status_gateway_ms1': 'sofia status gateway example.com',
-    'status_gateway_ms2': 'sofia status gateway example.com',
-    'status_gateway_ms3': 'sofia status gateway example.com',
-    'status_default_GTW': 'sofia status gateway example.com',
+    'status_gateway_ms1': 'sofia status gateway ms1',
+    'status_gateway_ms2': 'sofia status gateway ms2',
+    'status_gateway_ms3': 'sofia status gateway ms3',
+    'status_default_GTW': 'sofia status gateway default-GW',
 }
 
 obj = {}
@@ -17,6 +17,7 @@ gtw1 = {}
 gtw2 = {}
 gtw3 = {}
 gtw4 = {}
+
 
 def dashboard(request):
     con = ESL.ESLconnection(options['server'], options['port'], options['auth'])
