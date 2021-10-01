@@ -269,6 +269,7 @@
 
 }
 
+/*
 .callin-gtw1 {
     grid-area: 3 / 1 / 4 / 2;
     text-align: center;
@@ -281,7 +282,6 @@
     text-align: center;
     margin-left: -15%;
 }
-
 
 .callin-gtw2 {
     grid-area: 3 / 3 / 4 / 4;
@@ -318,6 +318,68 @@
     text-align: center;
     margin-left: -10%;
 }
+ */
+
+.callin-gtw1 {
+    grid-area: 3 / 1 / 4 / 2;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+}
+
+
+.callout-gtw1 {
+    grid-area: 3 / 2 / 4 / 3;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+    margin-left: -10%;
+}
+
+.callin-gtw2 {
+    grid-area: 3 / 3 / 4 / 4;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+}
+
+.callout-gtw2 {
+    grid-area: 3 / 4 / 4 / 5;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+    margin-left: -10%;
+}
+
+.callin-gtw3 {
+    grid-area: 3 / 5 / 4 / 6;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+}
+
+.callout-gtw3 {
+    grid-area: 3 / 6 / 4 / 7;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+    margin-left: -10%;
+}
+
+.callin-gtw4 {
+    grid-area: 3 / 7 / 4 / 8;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+}
+
+.callout-gtw4 {
+    grid-area: 3 / 8 / 4 / 9;
+    text-align: center;
+    width: 90%;
+    height: 100%;
+    margin-left: -10%;
+}
 
 
 /* Navbar */
@@ -328,4 +390,8 @@
 
 .navbar-nav{
     margin: auto;
+}
+
+p {
+    text-align: center;
 }
