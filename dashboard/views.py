@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from freeswitchESL import ESL
+import os
+import subprocess
 
 options = {
     'auth': 'ClueCon',
@@ -17,6 +19,7 @@ gtw1 = {}
 gtw2 = {}
 gtw3 = {}
 gtw4 = {}
+cmd = {}
 
 
 def dashboard(request):
@@ -35,7 +38,9 @@ def dashboard(request):
         gtw2 = setGatewayNull()
         gtw3 = setGatewayNull()
         gtw4 = setGatewayNull()
-        return render(request, 'dashboard/dashboard.html', {'obj': obj, 'gtw1': gtw1, 'gtw2': gtw2, 'gtw3': gtw3, 'gtw4' : gtw4})
+        return render(request, 'dashboard/dashboard.html', {'obj': obj, 'gtw1': gtw1,
+                                                            'gtw2': gtw2, 'gtw3': gtw3,
+                                                            'gtw4': gtw4, 'cmd': cmd})
 
     status = con.api(options['status']).getBody()
     obj['isconected'] = 'OK'
@@ -44,6 +49,13 @@ def dashboard(request):
     obj['max_sessions'] = getmMaxsessions(status)
     obj['stack_size'] = getStackSize(status)
     obj['stack_min_size'] = getMinStackSize(status)
+
+    output = subprocess.getoutput("df -h").split('\n')
+    for out in output:
+        if out.startswith('/dev/xvda1'):
+            line = " ".join(out.split()).split(' ')
+            cmd['disponivel'] = line[3].replace('G', '')
+            cmd['used'] = line[2].replace('G', '')
 
     gtw_status = con.api(options['status_gateway_ms1']).getBody()
     if gtw_status.split(' ')[0] != 'Invalid':
@@ -69,7 +81,9 @@ def dashboard(request):
     else:
         gtw4 = setGatewayNull()
 
-    return render(request, 'dashboard/dashboard.html', {'obj': obj, 'gtw1': gtw1, 'gtw2': gtw2, 'gtw3': gtw3, 'gtw4' : gtw4})
+    return render(request, 'dashboard/dashboard.html', {'obj': obj, 'gtw1': gtw1,
+                                                        'gtw2': gtw2, 'gtw3': gtw3,
+                                                        'gtw4': gtw4, 'cmd': cmd})
 
 
 def setGateway(gtw_status):
@@ -104,7 +118,7 @@ def getUpTime(status):
 
 
 def getSessions(status):
-    return status.split('\n')[2].split(' ')[0]
+    return status.split('\n')[3].split(' ')[0]
 
 
 def getmMaxsessions(status):

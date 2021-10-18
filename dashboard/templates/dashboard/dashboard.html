@@ -6,36 +6,47 @@
     <div class="container">
         <div class="container-dash">
             <div class="info-main"></div>
-                <div class="info1" id="isup">
-                    <h4>System Up</h4>
-                    <span>{{ obj.isconected }}</span>
-                </div>
-                <div class="info2" id="upsince">
-                    <h4>Up Since</h4>
-                    <span>{{ obj.since }}</span>
-                </div>
-                <div class="info3" id="sessions">
-                    <h4>Sessions</h4>
-                    <span>{{ obj.sessions }}</span>
-                </div>
+            <div class="info1" id="isup">
+                <h4>System Up</h4>
+                <span>{{ obj.isconected }}</span>
+            </div>
+            <div class="info2" id="upsince">
+                <h4>Up Since</h4>
+                <span>{{ obj.since }}</span>
+            </div>
+            <div class="info3" id="sessions">
+                <h4>Sessions</h4>
+                <span>{{ obj.sessions }}</span>
+            </div>
 
-            <div class="graph1"></div>
-            <div class="tittle-graph1"><h4>Stak Size</h4></div>
-            <div class="graph-stack">
-                 <div style="margin: auto; width:100%; height:100%;">
-                    <canvas id="myChart"></canvas>
+            <div class="graph1">
+                <div class="tittle-graph1"><h4>Stack</h4></div>
+                <div class="graph-stack">
+                     <div style="margin: auto; width:100%; height:100%;">
+                        <canvas id="myChart"></canvas>
+                    </div>
                 </div>
             </div>
 
-            <div class="graph2"></div>
-            <div class="tittle-graph2"><h4>Sessions</h4></div>
-            <div class="graph-sessions">
-                <div style="margin: auto; width:100%; height:100%;">
-                    <canvas id="myChart2"></canvas>
+            <div class="graph2">
+                <div class="tittle-graph2"><h4>Sessions</h4></div>
+                <div class="graph-sess">
+                    <div style="margin: auto; width:100%; height:100%;">
+                        <canvas id="myChart2"></canvas>
+                    </div>
                 </div>
             </div>
 
-            <div class="graph-sessions"></div>
+            <div class="graph3">
+                <div class="tittle-graph3"><h4>Memory</h4></div>
+                <div class="graph-space">
+                     <div style="margin: auto; width:100%; height:100%;">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="gateway-box">
                 <div class="gtw1"></div>
                 <div class="gtw2"></div>
@@ -166,6 +177,29 @@
                 labels: ['free', 'busy'],
                 datasets: [{
                     data: [{{ obj.max_sessions }}, {{ obj.sessions }}],
+                    backgroundColor: [
+                        'rgb(0,160,240)',
+                        'rgb(253,0,130)'
+                    ],
+
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        var ctxq = document.getElementById('myChart3').getContext('2d');
+        var myChartq = new Chart(ctxq, {
+            type: 'doughnut',
+            data: {
+                labels: ['free', 'busy'],
+                datasets: [{
+                    data: [{{ cmd.disponivel }}, {{ cmd.used }}],
                     backgroundColor: [
                         'rgb(0,160,240)',
                         'rgb(253,0,130)'
